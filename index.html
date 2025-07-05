@@ -13,7 +13,10 @@
 
 <header>
   <nav class="navbar">
-    <div class="logo">🏨 Pearl Heights</div>
+    <div class="logo">
+      <img src="images/logo.jpg" alt="Hotel Logo" class="logo-img" />
+      <span>Hotel Pearl Heights</span>
+    </div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#hero">Home</a></li>
@@ -27,7 +30,7 @@
 <section id="hero" class="hero">
   <div class="hero-overlay">
     <div class="hero-content" data-aos="zoom-in">
-      <h1>Welcome to Paradise</h1>
+      <h1>Welcome to Hotel Pearl Heights</h1>
       <p class="typed-text" style="min-height: 1.5em;"></p>
       <a href="#rooms" class="btn btn-primary">Book Your Stay</a>
     </div>
@@ -67,7 +70,7 @@
 
 <section id="contact" class="section contact" data-aos="fade-up">
   <h2>Contact Us</h2>
-  <p>📞 +91‑1234567890 | 📧 contact@pearlheights.com</p>
+  <p>📞 0663-2546666, 7847973988 | 📧 hotelpearlheights@gmail.com</p>
   <iframe src="https://maps.google.com/maps?q=goa&t=&z=13&ie=UTF8&iwloc=&output=embed"
     width="100%" height="250" style="border:0;" allowfullscreen=""></iframe>
 </section>
@@ -83,39 +86,29 @@
   AOS.init({ duration: 800 });
 
   function toggleMenu() {
-    const navLinks = document.getElementById("navLinks");
-    navLinks.classList.toggle("show");
+    document.getElementById("navLinks").classList.toggle("show");
   }
 
   const typedText = document.querySelector(".typed-text");
-  const phrases = ["Relax. Recharge. Rediscover Luxury.", "Stay. Swim. Smile.", "Book Your Perfect Escape."];
-  let phraseIndex = 0, letterIndex = 0, currentText = "", isDeleting = false;
+  const phrases = ["Elegant Stay at Pearl Heights", "Dine at SODIUM Café", "Lodging · Party · Comfort"];
+  let i = 0, j = 0, currentPhrase = "", isDeleting = false;
 
   function type() {
-    const currentPhrase = phrases[phraseIndex];
+    currentPhrase = phrases[i];
     if (isDeleting) {
-      currentText = currentPhrase.substring(0, letterIndex--);
+      j--;
+      if (j <= 0) {
+        isDeleting = false;
+        i = (i + 1) % phrases.length;
+      }
     } else {
-      currentText = currentPhrase.substring(0, letterIndex++);
+      j++;
+      if (j === currentPhrase.length) isDeleting = true;
     }
-
-    typedText.textContent = currentText;
-
-    if (!isDeleting && letterIndex === currentPhrase.length) {
-      isDeleting = true;
-      setTimeout(type, 1500);
-    } else if (isDeleting && letterIndex === 0) {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-      setTimeout(type, 300);
-    } else {
-      setTimeout(type, isDeleting ? 50 : 100);
-    }
+    typedText.textContent = currentPhrase.substring(0, j);
+    setTimeout(type, isDeleting ? 60 : 120);
   }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(type, 1000);
-  });
+  document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
 </script>
 </body>
 </html>

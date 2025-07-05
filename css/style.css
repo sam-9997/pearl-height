@@ -1,3 +1,13 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo-img {
+  height: 40px;   /* adjust as needed */
+  width: auto;
+  border-radius: 8px;  /* optional: makes it look neat */
+}
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body, html {
@@ -75,6 +85,7 @@ body, html {
   justify-content: center;
   align-items: center;
   color: white;
+  text-align: center;
   padding: 2rem;
 }
 .scroll-down {
@@ -147,7 +158,7 @@ footer {
   text-decoration: none;
 }
 .btn-primary {
-  background: linear-gradient(45deg, #4CAF50, #45a049);
+  background: #ff9800;
   color: white;
   border: none;
 }
