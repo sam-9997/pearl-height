@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paradise Hotel</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">🏨 Pearl Heights</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="hero" class="hero">
+  <div class="hero-overlay">
+    <div class="hero-content" data-aos="zoom-in">
+      <h1>Welcome to Pearl Heights</h1>
+      <p class="typed-text" style="min-height: 1.5em;"></p>
+      <a href="#rooms" class="btn btn-primary">Book Your Stay</a>
+    </div>
+    <div class="scroll-down">↓</div>
+  </div>
+</section>
+
+<section id="rooms" class="section rooms">
+  <h2 data-aos="fade-up">Our Rooms</h2>
+  <div class="cards">
+    <div class="card" data-aos="fade-right">
+      <img src="images/room1.jpg" alt="Standard Room" />
+      <h3>Standard Room</h3>
+      <p>Perfect for a comfortable stay – ₹2,500/night</p>
+    </div>
+    <div class="card" data-aos="fade-up">
+      <img src="images/room2.jpg" alt="Deluxe Room" />
+      <h3>Deluxe Room</h3>
+      <p>Modern amenities & premium bedding – ₹4,000/night</p>
+    </div>
+    <div class="card" data-aos="fade-left">
+      <img src="images/room3.jpg" alt="Suite" />
+      <h3>Luxury Suite</h3>
+      <p>Spacious, elegant, and private – ₹6,500/night</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="section gallery">
+  <h2 data-aos="fade-up">Gallery</h2>
+  <div class="gallery-grid">
+    <img src="images/gallery1.jpg" alt="Lobby" data-aos="zoom-in" />
+    <img src="images/gallery2.jpg" alt="Pool" data-aos="zoom-in" />
+    <img src="images/gallery3.jpg" alt="Dining Area" data-aos="zoom-in" />
+  </div>
+</section>
+
+<section id="contact" class="section contact" data-aos="fade-up">
+  <h2>Contact Us</h2>
+  <p>📞 +91‑1234567890 | 📧 contact@paradisehotel.com</p>
+  <iframe src="https://maps.google.com/maps?q=goa&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</section>
+
+<footer>
+  <p>&copy; 2025 Paradise Hotel. All rights reserved.</p>
+</footer>
+
+<a href="#contact" class="floating-btn">Book Now</a>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 800 });</script>
+<script>
+  const typedText = document.querySelector(".typed-text");
+  const phrases = [
+    "Relax. Recharge. Rediscover Luxury.",
+    "Stay. Swim. Smile.",
+    "Book Your Perfect Escape."
+  ];
+  let phraseIndex = 0, letterIndex = 0, currentText = "", isDeleting = false;
+
+  function type() {
+    const currentPhrase = phrases[phraseIndex];
+    if (isDeleting) {
+      currentText = currentPhrase.substring(0, letterIndex--);
+    } else {
+      currentText = currentPhrase.substring(0, letterIndex++);
+    }
+
+    typedText.textContent = currentText;
+
+    if (!isDeleting && letterIndex === currentPhrase.length) {
+      isDeleting = true;
+      setTimeout(type, 1500);
+    } else if (isDeleting && letterIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      setTimeout(type, 300);
+    } else {
+      setTimeout(type, isDeleting ? 50 : 100);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(type, 1000);
+  });
+</script>
+</body>
+</html>
