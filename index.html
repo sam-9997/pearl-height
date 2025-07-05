@@ -9,13 +9,13 @@
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
 <header>
   <nav class="navbar">
     <div class="logo">🏨 Pearl Heights</div>
-    <ul class="nav-links">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#hero">Home</a></li>
       <li><a href="#rooms">Rooms</a></li>
       <li><a href="#gallery">Gallery</a></li>
@@ -27,7 +27,7 @@
 <section id="hero" class="hero">
   <div class="hero-overlay">
     <div class="hero-content" data-aos="zoom-in">
-      <h1>Welcome to Pearl Heights</h1>
+      <h1>Welcome to Paradise</h1>
       <p class="typed-text" style="min-height: 1.5em;"></p>
       <a href="#rooms" class="btn btn-primary">Book Your Stay</a>
     </div>
@@ -79,14 +79,16 @@
 <a href="#contact" class="floating-btn">Book Now</a>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({ duration: 800 });</script>
 <script>
+  AOS.init({ duration: 800 });
+
+  function toggleMenu() {
+    const navLinks = document.getElementById("navLinks");
+    navLinks.classList.toggle("show");
+  }
+
   const typedText = document.querySelector(".typed-text");
-  const phrases = [
-    "Relax. Recharge. Rediscover Luxury.",
-    "Stay. Swim. Smile.",
-    "Book Your Perfect Escape."
-  ];
+  const phrases = ["Relax. Recharge. Rediscover Luxury.", "Stay. Swim. Smile.", "Book Your Perfect Escape."];
   let phraseIndex = 0, letterIndex = 0, currentText = "", isDeleting = false;
 
   function type() {

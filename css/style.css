@@ -8,18 +8,63 @@ body, html {
 }
 
 .navbar {
-  position: sticky; top: 0;
+  position: sticky;
+  top: 0;
   background: rgba(0,0,0,0.85);
   padding: 1rem 2rem;
-  display: flex; justify-content: space-between; align-items: center;
-  color: white; z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  z-index: 1000;
 }
-.nav-links { list-style: none; display: flex; gap: 1.5rem; }
-.nav-links a { color: white; text-decoration: none; font-weight: bold; }
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+}
 
 .hero {
   position: relative;
-  height: 90vh;
+  height: calc(100vh - 60px);
   background: url('../images/hero.jpg') center/cover no-repeat;
 }
 .hero-overlay {
@@ -35,7 +80,7 @@ body, html {
 .scroll-down {
   position: absolute;
   bottom: 20px;
-  font-size: 2rem;
+  font-size: 3rem;
   animation: bounce 2s infinite;
   color: white;
 }
